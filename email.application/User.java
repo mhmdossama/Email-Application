@@ -9,7 +9,7 @@ public class User {
     private String lastName;
     private String department;
     private String password;
-    private int mailBoxCapacity=500;
+    private int mailBoxCapacity = 500;
 
     private String generatedEmail;
 
@@ -21,7 +21,7 @@ public class User {
         setPassword();
     }
 
-    private String setDepartment(){
+    private String setDepartment() {
         Scanner scanner = new Scanner(System.in);
         int deptNum;
 
@@ -38,6 +38,7 @@ public class User {
             } else {
                 System.out.println("Invalid input. Please enter a number between 1 and 4.");
             }
+            scanner.close();
         }
 
         switch (deptNum) {
@@ -52,20 +53,22 @@ public class User {
             default:
                 return "";
 
-    }}
-
-    //Generate an email
-    private void generateEmail(){
-        this.generatedEmail=(this.firstName+"."+this.lastName+"@"+this.department+".company.com").toLowerCase();
+        }
     }
 
-    private void setPassword(){
+    // Generate an email
+    private void generateEmail() {
+        this.generatedEmail = (this.firstName + "." + this.lastName + "@" + this.department + ".company.com")
+                .toLowerCase();
+    }
+
+    private void setPassword() {
 
         final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        Random random =new Random();
+        Random random = new Random();
 
-        int minLength=5;
-        int maxLength=10;
+        int minLength = 5;
+        int maxLength = 10;
 
         int length = minLength + random.nextInt(maxLength - minLength + 1);
 
@@ -75,7 +78,7 @@ public class User {
             char randomChar = CHARACTERS.charAt(random.nextInt(CHARACTERS.length()));
             text.append(randomChar);
         }
-        this.password=text.toString();
+        this.password = text.toString();
     }
 
     public void setPassword(String password) {
@@ -102,4 +105,3 @@ public class User {
                 '}';
     }
 }
- 
